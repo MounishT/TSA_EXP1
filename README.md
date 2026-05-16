@@ -1,5 +1,5 @@
 # Ex.No: 01A PLOT A TIME SERIES DATA
-###  Date: 
+###  Date: 02-05-2026
 
 # AIM:
 To Develop a python program to Plot a time series data (population/ market price of a commodity
@@ -14,35 +14,27 @@ To Develop a python program to Plot a time series data (population/ market price
 ```
 import pandas as pd
 import matplotlib.pyplot as plt
-df = pd.read_csv("train.csv")
-df['date'] = pd.to_datetime(df['date'])
-df.set_index('date', inplace=True)
-df['num_sold'].fillna(0, inplace=True)
-daily_sales = df['num_sold'].resample('D').sum()
-plt.figure(figsize=(12, 6))
-plt.plot(daily_sales.index, daily_sales, label='Total Units Sold', color='blue')
-plt.title('Total Products Sold Over Time')
-plt.xlabel('Date')
-plt.ylabel('Number of Products Sold')
-plt.grid(True)
+df = pd.read_csv('Combined12.csv')
+print(df.columns)
+col = 'temp_mean(c)'
+mean_value = df[col].mean()
+print("Mean:", mean_value)
+plt.figure(figsize=(10,5))
+plt.plot(df.index, df[col], color='black', label='Temperature')
+plt.title('Temperature Variation')
+plt.xlabel('Index')
+plt.ylabel('Temperature (C)')
 plt.legend()
+plt.grid()
 plt.show()
 ```
-
-
-
-
-
-
-
-
-
-
 # OUTPUT:
-![image](https://github.com/user-attachments/assets/b789c961-379e-49ea-854d-35c1ae1a01bc)
+
+<img width="1062" height="577" alt="image" src="https://github.com/user-attachments/assets/3797d0db-69dc-48f6-b5af-0ae114712233" />
 
 
 
+<img width="1057" height="516" alt="image" src="https://github.com/user-attachments/assets/fc062de3-8bc9-4ab6-b610-0d7f7d563239" />
 
 
 
